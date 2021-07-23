@@ -9,16 +9,8 @@ public class Cart {
 
     @Id
     int idCart;
-    int idProduct;
-    int quantity;
-
-    @ManyToMany
-    @JoinTable(
-            name = "cart_enrolled",
-            joinColumns = @JoinColumn(name = "cart_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    Set<Product> enrolledProduct = new HashSet<>();
+    @OneToMany(mappedBy = "cart")
+    Set<ProductQuantity> products = new HashSet<>();
     @OneToOne
     User user;
 }

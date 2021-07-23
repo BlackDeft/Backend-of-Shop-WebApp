@@ -1,8 +1,6 @@
 package com.JacekStachecki.OnlineShop.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,6 +14,6 @@ public class Product {
     String producer;
     double price;
     int quantity;
-    @ManyToMany(mappedBy = "enrolledProduct")
-    Set<Cart> carts = new HashSet<>();
+    @OneToMany(mappedBy = "product")
+    Set<ProductQuantity> product = new HashSet<>();
 }
